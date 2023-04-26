@@ -1,0 +1,42 @@
+.wrapper {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size:1.3rem;
+     color: red;
+}
+
+ul li::marker {
+    content: '👉';
+  }
+  
+  ul li:hover::marker {
+    content: '🧡';
+  }
+  
+  
+  ul {
+    text-align: left;
+    width: min-content;
+    margin: 0 auto;
+    line-height: 44px;
+  }
+  
+  h1 {
+    font-size: 40px;
+  }
+  
+  li {
+    padding-left: 12px;
+    cursor: pointer;
+  }
+  
+  li:nth-child(odd) {
+    color: #ff6000;
+  }
+  li:nth-child(even) {
+    color: green;
+  }
+  
+  a {
+    color: red;
+  }

@@ -1,0 +1,15 @@
+.m {
+    margin-top: 5px;
+    margin-left: 500px;
+    font-size:1.3rem;
+     color: red;
+}
+select{
+    width: 300px;
+    height:40px;
+    border-radius: 10px;
+    padding-left:10px;
+    font-size:1.1rem;
+    border:none;
+    outline: none;
+  }
