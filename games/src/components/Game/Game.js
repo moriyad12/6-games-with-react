@@ -75,7 +75,6 @@ export function create(txt){
   var space = {
     width:"65px",
     height:"65px",
-    backgroundColor:' rgb(38, 66, 73)',
     textAlign:"center",
     fontSize:"40px",
     borderRadius: "0%"
@@ -90,6 +89,10 @@ export function create(txt){
   }
   const boardBox = {
     width:65*dimension,
+    background: ' #abbaab',/* fallback for old browsers */
+background: '-webkit-linear-gradient(to right, #ffffff, #abbaab)',  /* Chrome 10-25, Safari 5.1-6 */
+background: 'linear-gradient(to right, #ffffff, #abbaab)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     display:'flex',
     flexWrap:'wrap',
     marginTop:"20px",
