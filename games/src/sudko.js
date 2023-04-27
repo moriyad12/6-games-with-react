@@ -211,7 +211,7 @@ export default class sudko extends engine{
      console.log(this.container)
      let X=this.inp[0]-1;
      let y=this.inp[1]-1;
-     let z=this.inp[4];
+     let z=Math.round(this.inp[4]);
      if(!(X>-1&&X<9&&y>-1&&y<9&&z>-1&&z<10))
      alert("Not possible ");
 	 else if(z==0)

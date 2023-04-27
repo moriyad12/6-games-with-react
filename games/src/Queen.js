@@ -1,46 +1,52 @@
 import { input } from "./components/Game/Game"
 import engine from "./engine"
-export default class Queen extends engine{
+export default class Queen extends engine {
 
 
-    check_do(x,y,bol) {
-        if (bol == 0) {
-            if (x < 0 || x > 7 || y < 0 || y > 7) {
-                alert("cant put");
-                return false;
-            }
-            for (let i =- 9; i < 9; i++) {
-                let nx=x+i;
-                let ny=y+i;
-                if (nx < 0 || nx > 7 || ny < 0 || ny > 7) continue;
-                if (this.container[nx][ny] == '♛') {
-                    alert("cant put 2");
-                    return false;
-                }
-            }
+    check_do(x, y) {
 
-            for (let i = x - 9; i < x + 9; i++) {
-                if (i < 0 || i > 7) continue;
-                if (this.container[i][y] == '♛') {
-                    alert("cant put 3");
-                    return false;
-                }
-            }
-            for (let i = y - 9; i < y + 9; i++) {
-                if (i < 0 || i > 7) continue;
-                if (this.container[x][i] == '♛') {
-                    alert("cant put 4   ");
-                    return false;
-                }
-            }
-            this.container[x][y] = '♛';
-        } else {
-            if (x < 0 || x > 7 || y < 0 || y > 7) {
-                alert("cant erase");
-                return false;
-            }
+        if (this.container[x][y] == '♛') {
             this.container[x][y] = '';
+            return;
         }
+
+
+        for (let i = -12; i < 12; i++) {
+            let nx = x + i;
+            let ny = y + i;
+            if (nx < 0 || nx > 7 || ny < 0 || ny > 7) continue;
+            if (this.container[nx][ny] == '♛') {
+                alert("cant put -45");
+                return false;
+            }
+        }
+        for (let i = -12; i < 12; i++) {
+            let nx = x - i;
+            let ny = y + i;
+            if (nx < 0 || nx > 7 || ny < 0 || ny > 7) continue;
+            if (this.container[nx][ny] == '♛') {
+                alert("cant put 45");
+                return false;
+            }
+        }
+
+
+        for (let i = x - 10; i < x + 10; i++) {
+            if (i < 0 || i > 7) continue;
+            if (this.container[i][y] == '♛') {
+                alert("cant put col ");
+                return false;
+            }
+        }
+        for (let i = y - 10; i < y + 10; i++) {
+            if (i < 0 || i > 7) continue;
+            if (this.container[x][i] == '♛') {
+                alert("cant put  row  ");
+                return false;
+            }
+        }
+        this.container[x][y] = '♛';
+
     }
 
     constructor(){
@@ -62,9 +68,7 @@ export default class Queen extends engine{
         console.log(this.container)
         let x1=this.inp[0]-1;
         let y1=this.inp[1]-1;
-        let bol=this.inp[4];
-        console.log(bol);
-        this.check_do(x1,y1,bol);
+        this.check_do(x1,y1);
             this.drawer()
     }
 }
