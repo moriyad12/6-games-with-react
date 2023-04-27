@@ -37,12 +37,11 @@ export function create(txt){
 
 }
  const Game = () => {
-  var [val, setval] = useState(0);
   var [dimension, setDimension] = useState(0);
   const [board, setBoard] = useState([]);
   const handleClick = () => {
-    v=val
     myInstance.controler()
+    useeffect()
   };
   const takeInput = (i,j) => {
     if(clicknumber==0)
@@ -125,6 +124,13 @@ background: 'linear-gradient(to right, #ffffff, #abbaab)', /* W3C, IE 10+/ Edge,
 
     setBoard(arr);
   }
+  function useeffect(){
+    size=myInstance.par[0];
+  container=myInstance.par[3];
+  colors=myInstance.par[2];
+  Iscircle=myInstance.par[1];
+   makeBoard();
+ }
 
   useEffect(()=>{
      size=myInstance.par[0];
@@ -132,12 +138,12 @@ background: 'linear-gradient(to right, #ffffff, #abbaab)', /* W3C, IE 10+/ Edge,
    colors=myInstance.par[2];
    Iscircle=myInstance.par[1];
     makeBoard();
-  })
+  },[])
 
   return (
     <div className='board'>
       <div className="in">
-      <input type="number" placeholder='value' onChange={(e)=>setval(e.target.value)} />
+      <input type="number" placeholder='value' onChange={(e)=>v=e.target.value} />
       </div>
       <section style={boardBox}>
         {board}

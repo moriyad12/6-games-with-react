@@ -10,28 +10,32 @@ export default class chess extends engine{
          let px = x1 , py = y1;
          let t2 = true;
          for(let j = 1 ; j < 8 ; j++){
-            this.px += dx[i];
-            this.py += dy[i];
+            px += dx[i];
+            py += dy[i];
             if(px < 0 || px > 7 || py <0 || py > 7){
                continue;
             }
             if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.color[x1][y1] != this.color[x2][y2]) && t2 ){
-               this.color[x2][y2] = this.color[x2][y2];
+               this.color[x2][y2] = this.color[x1][y1];
                this.color[x1][y1] = '';
                this.container[x2][y2] = this.container[x1][y1];
                this.container[x1][y1] = '';
-               this.t = false;
+               t = false;
+               break;
             }
             if(this.container[px][py] != '' && px != x2 && py != y2){
-               this.t2 = false;
+               t2 = false;
             }
+         }
+         if(!t){
+            break;
          }
       }
 
       if(t){
          alert("invalid move !!")
       }
-      if(t!=1){
+      if(!t){
          if(this.turn) 
          {
             this.turn=false
@@ -56,22 +60,26 @@ export default class chess extends engine{
                break;
             }
             if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.colors[x1][y1] != this.color[x2][y2]) && t2 ){
-               this.color[x2][y2] = this.color[x2][y2];
+               this.color[x2][y2] = this.color[x1][y1];
                this.color[x1][y1] = '';
                this.container[x2][y2] = this.container[x1][y1];
                this.container[x1][y1] = '';
                t = false;
+               break;
             }
             if(this.container[px][py] != '' && px != x2 && py != y2){
                t2 = false;
             }
+         }
+         if(!t){
+            break;
          }
       }
 
       if(t){
          alert("invalid move !!")
       }
-      if(t!=1){
+      if(!t){
          if(this.turn) 
          {
             this.turn=false
@@ -90,24 +98,25 @@ export default class chess extends engine{
          let px = x1 , py = y1;
          px += dx[i];
          py += dy[i];
-         console.log(this.color[x2][y2])
+         console.log("hello " , this.color[x2][y2])
          console.log(this.color[x1][y1])
          if(px < 0 || px > 7 || py <0 || py > 7){
             continue;
          }
          if(px == x2 && py == y2 && (this.container[px][py] == ''  || this.color[x1][y1] != this.color[x2][y2]) ){
-            this.color[x2][y2] = this.color[x2][y2];
+            this.color[x2][y2] = this.color[x1][y1];
             this.color[x1][y1] = '';
             this.container[x2][y2] = this.container[x1][y1];
             this.container[x1][y1] = '';
             t = false;
+            break;
          }
       }
 
       if(t){
          alert("invalid move !!")
       }
-      if(t!=1){
+      if(!t){
          if(this.turn) 
          {
             this.turn=false
@@ -132,22 +141,26 @@ export default class chess extends engine{
                continue;
             }
             if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.color[x1][y1] != this.color[x2][y2]) && t2 ){
-               this.color[x2][y2] = this.color[x2][y2];
+               this.color[x2][y2] = this.color[x1][y1];
                this.color[x1][y1] = '';
                this.container[x2][y2] = this.container[x1][y1];
                this.container[x1][y1] = '';
                t = false;
+               break;
             }
             if(this.container[px][py] != '' && px != x2 && py != y2){
                t2 = false;
             }
+         }
+         if(!t){
+            break;
          }
       }
 
       if(t){
          alert("invalid move !!")
       }
-      if(t!=1){
+      if(!t){
          if(this.turn) 
          {
             this.turn=false
@@ -171,18 +184,19 @@ export default class chess extends engine{
             continue;
          }
          if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.color[x1][y1] != this.color[x2][y2]) ){
-            this.color[x2][y2] = this.color[x2][y2];
+            this.color[x2][y2] = this.color[x1][y1];
             this.color[x1][y1] = '';
-            this.container[x2][this.y2] = this.container[x1][y1];
+            this.container[x2][y2] = this.container[x1][y1];
             this.container[x1][y1] = '';
             t = false;
+            break;
          }
       }
 
       if(t){
          alert("invalid move !!")
       }
-      if(t!=1){
+      if(!t){
          if(this.turn) 
          {
             this.turn=false
@@ -198,7 +212,8 @@ export default class chess extends engine{
       var t = 1;
       if(this.color[x1][y1] == 'b' && x1 == 1){
          if(y1 == y2 && (x1 + 1 == x2 || x1+2 == x2)){
-            if(this.container[x2][y2] == ''){
+            
+            if(this.container[x2][y2] == '' && !(x1+2 ==x2 && this.color[x1+1][y2] != '') ){
                t = 0;
             }   
          }
@@ -228,7 +243,7 @@ export default class chess extends engine{
       }else if(this.color[x1][y1] == 'w' && x1 == 6){
          console.log("zz")
          if(y1 == y2 && (x1 - 1 == x2 || x1-2 == x2)){
-            if(this.container[x2][y2] == ''){
+            if(this.container[x2][y2] == '' && !(x1-2 ==x2 && this.color[x1-1][y2] != '')){
                t = 0;
             }   
          }
@@ -258,7 +273,7 @@ export default class chess extends engine{
       }
 
 
-      if(t == 1){
+      if(t==1){
          alert("invalid move !!")
       }else if(t == 0){
          this.color[x2][y2] = this.color[x1][y1];
@@ -278,7 +293,7 @@ export default class chess extends engine{
             this.container[x1][y1] = ''
          }
       }
-      if(t!=1){
+      if(t!= 1){
          if(this.turn) 
          {
             this.turn=false
@@ -312,12 +327,16 @@ export default class chess extends engine{
      let y=this.inp[1]-1;
      let xx=this.inp[2]-1;
      let yy=this.inp[3]-1
-     console.log(this.container[x][y])
+     console.log("hhhhh");
+     console.log(this.container[x][y]);
+     console.log(this.color[x][y]);
+     console.log(this.container[xx][yy]);
+     console.log(this.color[xx][yy]);
      if(this.container[x][y] == ''){
       alert("invalid move !!");}
-      else if(this.turn==true&&this.color[x][y]!='b')
+      else if((this.turn==true&&this.color[x][y]!='b')||(this.turn==true&&this.color[x][y]!='b'&& this.color[xx][yy] =='b'))
       alert("invalid move !!");
-      else if(this.turn==false&&this.color[x][y]!='w')
+      else if((this.turn==false&&this.color[x][y]!='w') || (this.turn==false&&this.color[x][y]=='w' && this.color[xx][yy] == 'w'))
       alert("invalid move !!");
      else if(this.container[x][y] == '♝' || this.container[x][y]== '♗'){
          this.checkValid_bishop(x , y , xx , yy);
