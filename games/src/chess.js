@@ -6,16 +6,16 @@ export default class chess extends engine{
       var dx = [-1  , -1 , 1 , 1 , -1  , 1 , 0 , 0];
       var dy = [-1  , 1 , -1 , 1 , 0  ,  0, -1 , 1];
       let t = true;
-      for(let i = 0 ; i < 4 ; i++){
+      for(let i = 0 ; i < 8; i++){
          let px = x1 , py = y1;
          let t2 = true;
          for(let j = 1 ; j < 8 ; j++){
             this.px += dx[i];
             this.py += dy[i];
             if(px < 0 || px > 7 || py <0 || py > 7){
-               break;
+               continue;
             }
-            if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.colors[x1][y1] != this.color[x2][y2]) && t2 ){
+            if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.color[x1][y1] != this.color[x2][y2]) && t2 ){
                this.color[x2][y2] = this.color[x2][y2];
                this.color[x1][y1] = '';
                this.container[x2][y2] = this.container[x1][y1];
@@ -86,14 +86,16 @@ export default class chess extends engine{
       var dx = [2,2,-2,-2,1,1,-1,-1];
       var dy = [1,-1,-1,1,2,-2,2,-2];
       let t = true;
-      for(let i = 0 ; i < 4 ; i++){
+      for(let i = 0 ; i < 8; i++){
          let px = x1 , py = y1;
          px += dx[i];
          py += dy[i];
+         console.log(this.color[x2][y2])
+         console.log(this.color[x1][y1])
          if(px < 0 || px > 7 || py <0 || py > 7){
-            break;
+            continue;
          }
-         if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.colors[x1][y1] != this.color[x2][y2]) ){
+         if(px == x2 && py == y2 && (this.container[px][py] == ''  || this.color[x1][y1] != this.color[x2][y2]) ){
             this.color[x2][y2] = this.color[x2][y2];
             this.color[x1][y1] = '';
             this.container[x2][y2] = this.container[x1][y1];
@@ -120,16 +122,16 @@ export default class chess extends engine{
       var dx = [-1  , 1 , 0 , 0];
       var dy = [0  ,  0, -1 , 1];
       let t = true;
-      for(let i = 0 ; i < 4 ; i++){
+      for(let i = 0 ; i < 8 ; i++){
          let px = x1 , py = y1;
          let t2 = true;
          for(let j = 1 ; j < 8 ; j++){
             px += dx[i];
             py += dy[i];
             if(px < 0 || px > 7 || py <0 || py > 7){
-               break;
+               continue;
             }
-            if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.colors[x1][y1] != this.color[x2][y2]) && t2 ){
+            if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.color[x1][y1] != this.color[x2][y2]) && t2 ){
                this.color[x2][y2] = this.color[x2][y2];
                this.color[x1][y1] = '';
                this.container[x2][y2] = this.container[x1][y1];
@@ -161,12 +163,12 @@ export default class chess extends engine{
       var dx = [1,1,1,0,0,-1,-1,-1];
       var dy = [1,-1,0,-1,1,0,1,-1];
       let t = true;
-      for(let i = 0 ; i < 4 ; i++){
+      for(let i = 0 ; i < 8 ; i++){
          let px = x1 , py = y1;
          px += dx[i];
          py += dy[i];
          if(px < 0 || px > 7 || py <0 || py > 7){
-            break;
+            continue;
          }
          if(px == x2 && py == y2 && (this.container[px][py] == '' || this.container[x2][y2] != '♚' && this.container[x2][y2] != '♔' && this.color[x1][y1] != this.color[x2][y2]) ){
             this.color[x2][y2] = this.color[x2][y2];
@@ -310,6 +312,7 @@ export default class chess extends engine{
      let y=this.inp[1]-1;
      let xx=this.inp[2]-1;
      let yy=this.inp[3]-1
+     console.log(this.container[x][y])
      if(this.container[x][y] == ''){
       alert("invalid move !!");}
       else if(this.turn==true&&this.color[x][y]!='b')
