@@ -7,6 +7,7 @@ import checker from '../../checker';
 import Queen from '../../Queen';
 import chess from '../../chess';
 let r1,r2,c1,c2,v
+var clicknumber=0
 export function input(){
      
     let inp =[]
@@ -15,6 +16,7 @@ export function input(){
     inp.push(r2)
     inp.push(c2)
     inp.push(v)
+    console.log(inp)
     return inp
 }
 var myInstance 
@@ -36,19 +38,25 @@ export function create(txt){
 }
  const Game = () => {
   var [val, setval] = useState(0);
-  var [row1, setrow1] = useState(0);
-  var [row2, setrow2] = useState(0);
-  var [colum1, setcolum1] = useState(0);
-  var [colum2, setcolum2] = useState(0);
   var [dimension, setDimension] = useState(0);
   const [board, setBoard] = useState([]);
   const handleClick = () => {
-    r1=row1
-    r2=row2
-    c1=colum1
-    c2=colum2
     v=val
     myInstance.controler()
+  };
+  const takeInput = (i,j) => {
+    if(clicknumber==0)
+    {
+      r1=i+1
+      c1=j+1
+      clicknumber=1
+    }
+    else{
+      r2=i+1
+      c2=j+1
+      clicknumber=0
+      handleClick()
+    }
   };
   
   var size
@@ -107,7 +115,7 @@ export function create(txt){
       for (let j=0;j<size;j++){
           let c=JSON.parse(JSON.stringify(color));
           c.backgroundColor=String(colors[i][j]);
-          temp.push(<div style={c}>{container[i][j]}</div>);
+          temp.push(<button  style={c} onClick={() => takeInput(i,j)}>{container[i][j]}</button>);
       }
       arr.push(temp);
     }
@@ -126,14 +134,7 @@ export function create(txt){
   return (
     <div className='board'>
       <div className="in">
-      <input type="number" placeholder='row1' onChange={(e)=>setrow1(e.target.value)} />
-      <input type="number" placeholder='colum1' onChange={(e)=>setcolum1(e.target.value)} />
-      <input type="number" placeholder='row2' onChange={(e)=>setrow2(e.target.value)} />
-      <input type="number" placeholder='colum2' onChange={(e)=>setcolum2(e.target.value)} />
       <input type="number" placeholder='value' onChange={(e)=>setval(e.target.value)} />
-      <button type="button" style={b} onClick={handleClick}>
-       submit
-      </button>
       </div>
       <section style={boardBox}>
         {board}
