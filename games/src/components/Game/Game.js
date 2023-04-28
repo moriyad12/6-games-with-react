@@ -16,7 +16,6 @@ export function input(){
     inp.push(r2)
     inp.push(c2)
     inp.push(v)
-    console.log(inp)
     return inp
 }
 var myInstance 

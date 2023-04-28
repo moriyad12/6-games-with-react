@@ -29,12 +29,11 @@ export default class Connect extends engine{
     if(this.turn)
     {
         this.colors[X][y]='blue'
-        this.turn=false
     }
     else {
         this.colors[X][y]='red'
-        this.turn=true
     }
+    this.turn=this.changeturn(this.turn)
     this.drawer()
   } 
 

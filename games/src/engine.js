@@ -15,6 +15,9 @@ export default class engine{
     this.par.push(this.colors);
     this.par.push(this.container);
  }
+ changeturn(t){
+  return !t
+ }
  controler(){
     
   } 

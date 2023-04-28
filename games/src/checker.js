@@ -47,7 +47,7 @@ export default class checker extends engine{
         return false;
     }
     do_it(x1,y1,x2,y2) {
-        if (Math.abs(x1 - x2) == 1) this.turn = !this.turn;
+        if (Math.abs(x1 - x2) == 1) this.turn=this.changeturn(this.turn)
         else {
             let md1 = (x2 - x1) / 2 + x1;
             let md2 = (y2 - y1) / 2 + y1;
@@ -57,7 +57,7 @@ export default class checker extends engine{
             console.log("one",x2,y2,zzz);
             if (zzz == 0) {
                 console.log("two")
-                this.turn = !this.turn;
+                this.turn=this.changeturn(this.turn)
                 this.can = true;
             }
         }

@@ -29,12 +29,11 @@ export default class tic extends engine{
     if(this.turn)
     {
         this.container[X][y]='X'
-        this.turn=false
     }
     else {
         this.container[X][y]='O'
-        this.turn=true
     }
+    this.turn=this.changeturn(this.turn)
     this.drawer()
   } 
 

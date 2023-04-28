@@ -36,13 +36,7 @@ export default class chess extends engine{
          alert("invalid move !!")
       }
       if(!t){
-         if(this.turn) 
-         {
-            this.turn=false
-         }
-         else {
-            this.turn=true
-         }
+         this.turn=this.changeturn(this.turn)
       }
    }
 
@@ -80,13 +74,7 @@ export default class chess extends engine{
          alert("invalid move !!")
       }
       if(!t){
-         if(this.turn) 
-         {
-            this.turn=false
-         }
-         else {
-            this.turn=true
-         }
+         this.turn=this.changeturn(this.turn)
       }
    }
 
@@ -117,13 +105,7 @@ export default class chess extends engine{
          alert("invalid move !!")
       }
       if(!t){
-         if(this.turn) 
-         {
-            this.turn=false
-         }
-         else {
-            this.turn=true
-         }
+         this.turn=this.changeturn(this.turn)
       }
    }
 
@@ -161,13 +143,7 @@ export default class chess extends engine{
          alert("invalid move !!")
       }
       if(!t){
-         if(this.turn) 
-         {
-            this.turn=false
-         }
-         else {
-            this.turn=true
-         }
+         this.turn=this.changeturn(this.turn)
       }
 
    }
@@ -197,13 +173,7 @@ export default class chess extends engine{
          alert("invalid move !!")
       }
       if(!t){
-         if(this.turn) 
-         {
-            this.turn=false
-         }
-         else {
-            this.turn=true
-         }
+         this.turn=this.changeturn(this.turn)
       }
    }
 
@@ -294,13 +264,7 @@ export default class chess extends engine{
          }
       }
       if(t!= 1){
-         if(this.turn) 
-         {
-            this.turn=false
-         }
-         else {
-            this.turn=true
-         }
+         this.turn=this.changeturn(this.turn)
       }
    }
 
@@ -327,11 +291,6 @@ export default class chess extends engine{
      let y=this.inp[1]-1;
      let xx=this.inp[2]-1;
      let yy=this.inp[3]-1
-     console.log("hhhhh");
-     console.log(this.container[x][y]);
-     console.log(this.color[x][y]);
-     console.log(this.container[xx][yy]);
-     console.log(this.color[xx][yy]);
      if(this.container[x][y] == ''){
       alert("invalid move !!");}
       else if((this.turn==true&&this.color[x][y]!='b')||(this.turn==true&&this.color[x][y]!='b'&& this.color[xx][yy] =='b'))
