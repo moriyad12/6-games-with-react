@@ -7,6 +7,7 @@ export default class sudko extends engine{
     mat
     SRN
     SRND
+	canremove
  constructor(){
     super() 
     {
@@ -21,6 +22,11 @@ export default class sudko extends engine{
     }, () => Array.from({
         length: this.N
     }, () => ''));
+	this.canremove = Array.from({
+        length:this.N
+    }, () => Array.from({
+        length: this.N
+    }, () => false));
     this.fillValues();
 	console.log(this.mat)
     this.container=this.mat
@@ -163,6 +169,7 @@ export default class sudko extends engine{
 			if (this.mat[i][j] !== '') {
 				count--;
 				this.mat[i][j] = '';
+				this.canremove[i][j]=true
 			}
 		}
 
@@ -214,8 +221,10 @@ export default class sudko extends engine{
      let z=Math.round(this.inp[4]);
      if(!(X>-1&&X<9&&y>-1&&y<9&&z>-1&&z<10))
      alert("Not possible ");
-	 else if(z==0)
-	    this.container[X][y]=''
+	 else if(z==0&&this.canremove[X][y])
+	 this.container[X][y]=''
+     else if(z==0)
+     alert("Not possible ");
    else if(this.container[X][y]!='')
     alert("Not possible ");
     else if(!this.ckeck(X,y,z))
