@@ -12,7 +12,7 @@ function App() {
   par=0;
   return (
     <div className="wrapper">
-      <h1>Ryad Games </h1>
+      <h1> Games </h1>
       <BrowserRouter>
         <nav>
           <ul>
